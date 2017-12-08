@@ -1,5 +1,5 @@
-const VERSION_FORCE = 1;
-const CACHE_NAME = 'tick_trump_' + 1;
+const VERSION_FORCE = '2';
+const CACHE_NAME = 'tick_trump_' + VERSION_FORCE;
 
 // Perform install steps (cache statics)
 self.addEventListener('install', event => event.waitUntil(
@@ -22,3 +22,13 @@ self.addEventListener('activate', event => event.waitUntil(
     })
   ))
 ));
+
+// Check cache for values
+self.addEventListener('fetch', (event) => {
+  return event.respondWith(
+    caches.open(CACHE_NAME)
+      .then(cache => cache.match(event.request)
+        .then(response => response || fetch(request).then(response))
+      )
+  );
+});
