@@ -1,4 +1,4 @@
-const VERSION_FORCE = '2';
+const VERSION_FORCE = '3';
 const CACHE_NAME = 'tick_trump_' + VERSION_FORCE;
 
 // Perform install steps (cache statics)
