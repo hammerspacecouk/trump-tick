@@ -1,4 +1,4 @@
-const VERSION_FORCE = '3';
+const VERSION_FORCE = '4';
 const CACHE_NAME = 'tick_trump_' + VERSION_FORCE;
 
 // Perform install steps (cache statics)
@@ -7,6 +7,7 @@ self.addEventListener('install', event => event.waitUntil(
     .then(cache =>
       cache.addAll([
         '/',
+        '/images/bg.png',
       ])
     ).then(() => self.skipWaiting())
 ));
