@@ -23,12 +23,10 @@ self.addEventListener('activate', event => event.waitUntil(
   ))
 ));
 
-// Check cache for values
-self.addEventListener('fetch', (event) => {
-  return event.respondWith(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.match(event.request)
-        .then(response => response || fetch(request).then(response))
-      )
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    caches.match(event.request).then(function(response) {
+      return response || fetch(event.request);
+    })
   );
 });
